@@ -5,6 +5,14 @@ interface Github {
   username: string;
 }
 
+interface Linkedin {
+  recommendations: {
+    display?: boolean;
+    widgetid?: string;
+    header?: string;
+  };
+}
+
 interface GitHubProjects {
   /**
    * Display GitHub projects?
@@ -343,6 +351,11 @@ interface Config {
    * GitHub config
    */
   github: Github;
+
+  /**
+   * bruh
+   */
+  linkedin: Linkedin;
 
   /**
    * Vite's base url

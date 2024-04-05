@@ -1,6 +1,15 @@
 // gitprofile.config.ts
 
 const CONFIG = {
+  linkedin: {
+    recommendations: {
+      // using a hakked version of: https://dash.elfsight.com/widget/create/linkedin-recommendations
+      display: true,
+      widgetid: 'b2c73b61-7309-439f-ab03-e6f0a63b4128',
+      header: 'Recommendations',
+    },
+  },
+
   github: {
     username: 'arifszn', // Your GitHub org/user name. (This is the only required config)
   },

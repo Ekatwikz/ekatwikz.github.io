@@ -2,6 +2,14 @@ export interface SanitizedGithub {
   username: string;
 }
 
+export interface SanitizedLinkedin {
+  recommendations: {
+    display: boolean;
+    widgetid: string;
+    header: string;
+  };
+}
+
 export interface SanitizedGitHubProjects {
   display: boolean;
   header: string;
@@ -133,6 +141,7 @@ export interface SanitizedThemeConfig {
 }
 
 export interface SanitizedConfig {
+  linkedin: SanitizedLinkedin;
   github: SanitizedGithub;
   projects: SanitizedProjects;
   seo: SanitizedSEO;

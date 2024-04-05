@@ -28,6 +28,13 @@ export const getSanitizedConfig = (
 ): SanitizedConfig | Record<string, never> => {
   try {
     return {
+      linkedin: {
+        recommendations: {
+          display: config.linkedin.recommendations.display ?? false,
+          widgetid: config.linkedin.recommendations.widgetid ?? '',
+          header: config.linkedin.recommendations.header ?? '',
+        },
+      },
       github: {
         username: config.github.username,
       },
