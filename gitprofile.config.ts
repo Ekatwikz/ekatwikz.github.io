@@ -54,56 +54,49 @@ const CONFIG = {
           title: "HPC-GPU Programming Group's Site",
           description:
             'Internship project. Overhauled and greatly improved layout created by previous team. Brought an exponential speed boost to existing maintenance workflow via efficient utilisation of Docker, Shell and Github Actions. Expanded modes of content delivery, and enhanced site using Gatsby, TypeScript, HTML and CSS.',
-          imageUrl:
-            'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg',
+          imageUrl: 'https://i.imgur.com/16RUGs0.png',
           link: 'https://hpcgpu.mini.pw.edu.pl/',
         },
         {
           title: 'Image Filtering Desktop Application',
           description:
             'Video demo. Created a desktop application using WPF and C#, which can be used to edit images using a multitude of hand-crafted, manually implemented image processing algorithms. Used image-hashing based optimizations to speed up computationally expensive operations.',
-          imageUrl:
-            'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg',
+          imageUrl: 'https://i.imgur.com/jO3dtnV.jpeg',
           link: 'https://www.youtube.com/watch?v=hxlHTQnwwKA&list=PLk6u9j48w-dbdu2Wh8Fk4PAVldUqaNHrZ',
         },
         {
           title: 'Hex2048',
           description:
             'Game demo. Used React and an external randomization API to create a fun, interactive and dynamic experience, putting a geometric twist on the well known 2048 game.',
-          imageUrl:
-            'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg',
+          imageUrl: 'https://i.imgur.com/KvdyHXL.png',
           link: 'http://ekatwikzhex2048.surge.sh',
         },
         {
           title: 'OIOIOI@PW Deployment',
           description:
             "Internship project. Created a web system installation for the faculty’s competitive programming team for contest preparation, closely mirroring the systems used in major competitions. Marked the first use of the faculty's new Swarm provisions.",
-          imageUrl:
-            'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg',
+          imageUrl: 'https://i.imgur.com/JjKNVfS.png',
           link: 'https://oioioi.mini.pw.edu.pl/',
         },
         {
           title: 'WebGL Demo',
           description:
             'Used three.js to create a unique and interactive web experience (camera can be controlled by clicking and dragging, or a touchscreen).',
-          imageUrl:
-            'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg',
+          imageUrl: 'https://i.imgur.com/vVRUsLq.png',
           link: 'https://ekatwikz.github.io/three.js_practice/',
         },
         {
           title: 'Realtime GPU Raycasting',
           description:
             'Video demo. Created a desktop application which used CUDA to draw directly onto a GL buffer, using the phong model to shade a densely packed scene of a thousand spheres, with enough efficiency to sustain a framerate suitable for realtime interactivity. All calculations and rendering were implemented by hand.',
-          imageUrl:
-            'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg',
+          imageUrl: 'https://i3.ytimg.com/vi/V-m8WJZGBAU/maxresdefault.jpg',
           link: 'https://www.youtube.com/watch?v=V-m8WJZGBAU&list=PLk6u9j48w-dbdu2Wh8Fk4PAVldUqaNHrZ',
         },
         {
           title: 'Geospatial Intelligence Tool Demo',
           description:
             'Used React and the Haversine formula to create a simple yet powerful tool which can be used as the basis of a rough estimate for fuel costs of a naval journey.',
-          imageUrl:
-            'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg',
+          imageUrl: 'https://i.imgur.com/hGWUmY8.png',
           link: 'https://geospatial-application.vercel.app/',
         },
       ],
