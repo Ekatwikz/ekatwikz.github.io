@@ -8,7 +8,6 @@ const LinkedinRecommendationsCard = ({
   header,
 }: {
   widgetid: string;
-  loading: boolean;
   header: string;
 }) => {
   return (
