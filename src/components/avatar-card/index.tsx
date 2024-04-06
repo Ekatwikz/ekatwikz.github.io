@@ -84,7 +84,6 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
           ) : (
             <a
               href={resumeFileUrl}
-              target="_blank"
               className="btn btn-outline btn-sm text-xs mt-6 opacity-50"
               download
               rel="noreferrer"
