@@ -184,12 +184,14 @@ const CONFIG = {
       degree: 'BSc. Computer Science and Information Systems',
       from: 'October 2020',
       to: 'February 2024',
+      grade: '4.5',
     },
     {
       // institution: 'Cambridge Assessment International Examinations',
       degree: 'Cambridge CIE A Levels',
       from: 'September 2017',
       to: 'June 2019',
+      grade: 'AAB (Equivalent: 4.7)',
     },
   ],
   googleAnalytics: {

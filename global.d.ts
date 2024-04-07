@@ -228,6 +228,7 @@ interface Education {
   degree?: string;
   from: string;
   to: string;
+  grade?: string;
 }
 
 interface Publication {
