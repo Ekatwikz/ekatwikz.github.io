@@ -27,12 +27,13 @@ export default defineConfig({
             },
             includeAssets: ['logo.png'],
             manifest: {
-              name: 'Portfolio',
-              short_name: 'Portfolio',
-              description: 'Personal Portfolio',
+              name: 'Portfolio - Emmanuel Katwikirize',
+              short_name: 'Portfolio - EK',
+              description:
+                "Emmanuel Katwikirize's software portfolio. I am an ambitious, fast learner, with a proven track record. Feel free to contact me for employment opportunities and project ideas.",
               icons: [
                 {
-                  src: 'logo.png',
+                  src: 'android-chrome-512x512.png',
                   sizes: '64x64 32x32 24x24 16x16 192x192 512x512',
                   type: 'image/png',
                 },

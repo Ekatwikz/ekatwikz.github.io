@@ -104,8 +104,9 @@ const CONFIG = {
   },
   seo: {
     title: 'Portfolio - Emmanuel Katwikirize',
-    description: '',
-    imageURL: '',
+    description:
+      "Emmanuel Katwikirize's software portfolio. I am an ambitious, fast learner, with a proven track record. Feel free to contact me for employment opportunities and project ideas.",
+    imageURL: 'https://ekatwikz.com/preview.jpg',
   },
   social: {
     linkedin: 'emanuel-katwik',
