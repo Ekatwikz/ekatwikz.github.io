@@ -86,6 +86,7 @@ const ThemeChanger = ({
                 </svg>
               </div>
               <div
+                role="listbox"
                 tabIndex={0}
                 className="mt-16 overflow-y-auto shadow-2xl top-px dropdown-content max-h-96 w-52 rounded-lg bg-base-200 text-base-content z-10"
               >
@@ -99,6 +100,8 @@ const ThemeChanger = ({
                     <li key={index} className={index ? 'pt-1' : ''}>
                       {}
                       <a
+                        role="listitem"
+                        tabIndex={index}
                         onClick={(e) => changeTheme(e, item)}
                         className={`${theme === item ? 'active' : ''}`}
                       >
