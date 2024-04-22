@@ -96,7 +96,7 @@ const ThemeChanger = ({
                       (item) => item !== themeConfig.defaultTheme,
                     ),
                   ].map((item, index) => (
-                    <li key={index}>
+                    <li key={index} className={index ? 'pt-1' : ''}>
                       {}
                       <a
                         onClick={(e) => changeTheme(e, item)}
