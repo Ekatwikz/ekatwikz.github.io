@@ -105,7 +105,7 @@ const CONFIG = {
   seo: {
     title: 'Portfolio - Emmanuel Katwikirize',
     description:
-      "Emmanuel Katwikirize's software portfolio. I am an ambitious, fast learner, with a proven track record. Feel free to contact me for employment opportunities and project ideas.",
+      "Emmanuel Katwikirize's software portfolio. I am an ambitious, fast learner, with a proven track record. Feel free to contact me for employment opportunities.",
     imageURL: 'https://ekatwikz.com/preview.jpg',
   },
   social: {
