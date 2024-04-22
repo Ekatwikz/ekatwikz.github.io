@@ -61,14 +61,16 @@ const ListItem: React.FC<{
   title: React.ReactNode;
   value: React.ReactNode;
   link?: string;
+  role?: string;
   skeleton?: boolean;
-}> = ({ icon, title, value, link, skeleton = false }) => {
+}> = ({ icon, title, value, link, role, skeleton = false }) => {
   return (
     <a
       href={link}
       target="_blank"
       rel="noreferrer"
       className="flex justify-start py-2 px-1 items-center"
+      role={role}
     >
       <div className="flex-grow font-medium gap-2 flex items-center my-1">
         {icon} {title}
@@ -127,6 +129,7 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
                   icon={<MdLocationOn />}
                   title="Based in:"
                   value={profile.location}
+                  role="button"
                 />
               )}
               {profile.company && (
