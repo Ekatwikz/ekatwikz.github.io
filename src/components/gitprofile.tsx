@@ -182,7 +182,7 @@ const GitProfile = ({ config }: { config: Config }) => {
 
   return (
     <HelmetProvider>
-      <div className="fade-in h-screen">
+      <div className="h-screen">
         {error ? (
           <ErrorPage
             status={error.status}
