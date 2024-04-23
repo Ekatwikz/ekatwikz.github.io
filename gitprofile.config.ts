@@ -218,7 +218,7 @@ const CONFIG = {
     displayAvatarRing: true,
 
     // Available themes. To remove any theme, exclude from here.
-    themes: ['dim', 'nord', 'valentine'],
+    themes: ['nord', 'dim', 'valentine'],
 
     // Custom theme, applied to `procyon` theme
     customTheme: {
