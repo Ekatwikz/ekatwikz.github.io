@@ -44,8 +44,17 @@ const GitProfile = ({ config }: { config: Config }) => {
   );
   const [theme, setTheme] = useState<string>(DEFAULT_THEMES[0]);
   const [error, setError] = useState<CustomError | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [profile, setProfile] = useState<Profile | null>(null);
+
+  const [profileLoading] = useState<boolean>(false);
+  const [projectsLoading, setProjectsLoading] = useState<boolean>(false);
+
+  const [profile, setProfile] = useState<Profile | null>({
+    avatar: 'https://avatars.githubusercontent.com/u/8590845?v=4',
+    bio: 'Ambitious, fast learner, with a passion for programming and creative problem solving.',
+    company: '',
+    location: 'Warsaw, Poland',
+    name: 'Emmanuel Katwikirize',
+  });
   const [githubProjects, setGithubProjects] = useState<GithubProject[]>([]);
 
   const getGithubProjects = useCallback(
@@ -100,7 +109,7 @@ const GitProfile = ({ config }: { config: Config }) => {
 
   const loadData = useCallback(async () => {
     try {
-      setLoading(true);
+      setProjectsLoading(true);
 
       const response = await axios.get(
         `https://api.github.com/users/${sanitizedConfig.github.username}`,
@@ -120,10 +129,11 @@ const GitProfile = ({ config }: { config: Config }) => {
       }
 
       setGithubProjects(await getGithubProjects(data.public_repos));
+      setProjectsLoading(false);
     } catch (error) {
       handleError(error as AxiosError | Error);
     } finally {
-      setLoading(false);
+      setProjectsLoading(false);
     }
   }, [
     sanitizedConfig.github.username,
@@ -203,43 +213,43 @@ const GitProfile = ({ config }: { config: Config }) => {
                       <ThemeChanger
                         theme={theme}
                         setTheme={setTheme}
-                        loading={loading}
+                        loading={false}
                         themeConfig={sanitizedConfig.themeConfig}
                       />
                     )}
                     <AvatarCard
                       profile={profile}
-                      loading={loading}
+                      loading={profileLoading}
                       avatarRing={sanitizedConfig.themeConfig.displayAvatarRing}
                       resumeFileUrl={sanitizedConfig.resume.fileUrl}
                     />
                     <DetailsCard
                       profile={profile}
-                      loading={loading}
+                      loading={profileLoading}
                       github={sanitizedConfig.github}
                       social={sanitizedConfig.social}
                     />
                     {sanitizedConfig.skills.length !== 0 && (
                       <SkillCard
-                        loading={loading}
+                        loading={profileLoading}
                         skills={sanitizedConfig.skills}
                       />
                     )}
                     {sanitizedConfig.experiences.length !== 0 && (
                       <ExperienceCard
-                        loading={loading}
+                        loading={profileLoading}
                         experiences={sanitizedConfig.experiences}
                       />
                     )}
                     {sanitizedConfig.certifications.length !== 0 && (
                       <CertificationCard
-                        loading={loading}
+                        loading={profileLoading}
                         certifications={sanitizedConfig.certifications}
                       />
                     )}
                     {sanitizedConfig.educations.length !== 0 && (
                       <EducationCard
-                        loading={loading}
+                        loading={profileLoading}
                         educations={sanitizedConfig.educations}
                       />
                     )}
@@ -258,7 +268,7 @@ const GitProfile = ({ config }: { config: Config }) => {
                     {sanitizedConfig.projects.external.projects.length !==
                       0 && (
                       <ExternalProjectCard
-                        loading={loading}
+                        loading={false}
                         header={sanitizedConfig.projects.external.header}
                         externalProjects={
                           sanitizedConfig.projects.external.projects
@@ -271,20 +281,20 @@ const GitProfile = ({ config }: { config: Config }) => {
                         header={sanitizedConfig.projects.github.header}
                         limit={sanitizedConfig.projects.github.automatic.limit}
                         githubProjects={githubProjects}
-                        loading={loading}
+                        loading={projectsLoading}
                         username={sanitizedConfig.github.username}
                         googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
                       />
                     )}
                     {sanitizedConfig.publications.length !== 0 && (
                       <PublicationCard
-                        loading={loading}
+                        loading={profileLoading}
                         publications={sanitizedConfig.publications}
                       />
                     )}
                     {sanitizedConfig.blog.display && (
                       <BlogCard
-                        loading={loading}
+                        loading={profileLoading}
                         googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
                         blog={sanitizedConfig.blog}
                       />
@@ -298,7 +308,10 @@ const GitProfile = ({ config }: { config: Config }) => {
                 className={`p-4 footer ${BG_COLOR} text-base-content footer-center`}
               >
                 <div className="card compact bg-base-100 shadow">
-                  <Footer content={sanitizedConfig.footer} loading={loading} />
+                  <Footer
+                    content={sanitizedConfig.footer}
+                    loading={profileLoading}
+                  />
                 </div>
               </footer>
             )}
