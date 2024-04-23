@@ -30,7 +30,7 @@ export default defineConfig({
               name: 'Portfolio - Emmanuel Katwikirize',
               short_name: 'Portfolio - E. K.',
               description:
-                "Emmanuel Katwikirize's software portfolio. I am an ambitious, fast learner, with a proven track record. Feel free to contact me for employment opportunities.",
+                "Emmanuel Katwikirize's software portfolio. I am an ambitious, fast learner, with a passion for programming and creative problem solving. Feel free to contact me.",
               icons: [
                 {
                   src: 'android-chrome-512x512.png',
