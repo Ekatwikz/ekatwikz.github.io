@@ -15,3 +15,8 @@
 - add config section for initial profile, and bool to toggle using it
 
 - use initial profile bool (or a new one?) to decide whether to ignore net errors when offline
+
+- fix theme dropdown to close after a theme has been selected?
+	idk. in general it behaves super weirdly compared to the normal select box
+	like this one even has some nonsense with being able to tab into it backwards
+	without explicitly opening it first, yuck
