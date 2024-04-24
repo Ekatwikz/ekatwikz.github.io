@@ -124,12 +124,18 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
             renderSkeleton()
           ) : (
             <Fragment>
-              {profile.location && (
+              <ListItem
+                icon={<AiFillGithub />}
+                title="GitHub:"
+                value={github.username}
+                link={`https://github.com/${github.username}`}
+              />
+              {social?.linkedin && (
                 <ListItem
-                  icon={<MdLocationOn />}
-                  title="Based in:"
-                  value={profile.location}
-                  role="button"
+                  icon={<FaLinkedin />}
+                  title="LinkedIn:"
+                  value={social.linkedin}
+                  link={`https://www.linkedin.com/in/${social.linkedin}`}
                 />
               )}
               {profile.company && (
@@ -144,12 +150,6 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
                   }
                 />
               )}
-              <ListItem
-                icon={<AiFillGithub />}
-                title="GitHub:"
-                value={github.username}
-                link={`https://github.com/${github.username}`}
-              />
               {social?.researchGate && (
                 <ListItem
                   icon={<SiResearchgate />}
@@ -172,14 +172,6 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
                   title="Mastodon:"
                   value={getFormattedMastodonValue(social.mastodon, false)}
                   link={getFormattedMastodonValue(social.mastodon, true)}
-                />
-              )}
-              {social?.linkedin && (
-                <ListItem
-                  icon={<FaLinkedin />}
-                  title="LinkedIn:"
-                  value={social.linkedin}
-                  link={`https://www.linkedin.com/in/${social.linkedin}`}
                 />
               )}
               {social?.dribbble && (
@@ -276,6 +268,14 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
                   link={`https://t.me/${social.telegram}`}
                 />
               )}
+              {social?.email && (
+                <ListItem
+                  icon={<RiMailFill />}
+                  title="Email:"
+                  value={social.email}
+                  link={`mailto:${social.email}`}
+                />
+              )}
               {social?.phone && (
                 <ListItem
                   icon={<RiPhoneFill />}
@@ -284,12 +284,12 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
                   link={`tel:${social.phone}`}
                 />
               )}
-              {social?.email && (
+              {profile.location && (
                 <ListItem
-                  icon={<RiMailFill />}
-                  title="Email:"
-                  value={social.email}
-                  link={`mailto:${social.email}`}
+                  icon={<MdLocationOn />}
+                  title="Based in:"
+                  value={profile.location}
+                  role="button"
                 />
               )}
             </Fragment>
