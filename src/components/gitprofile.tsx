@@ -177,7 +177,11 @@ const GitProfile = ({ config }: { config: Config }) => {
               setError(INVALID_GITHUB_USERNAME_ERROR);
               break;
             default:
-              setError(GENERIC_ERROR);
+              setError({
+                status: error.response.status,
+                title: 'Oops!!',
+                subTitle: 'Something went wrong.',
+              });
               break;
           }
         } else {
