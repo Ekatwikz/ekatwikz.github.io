@@ -2,7 +2,6 @@ import { AiOutlineControl } from 'react-icons/ai';
 import { SanitizedThemeConfig } from '../../interfaces/sanitized-config';
 import { LOCAL_STORAGE_KEY_NAME } from '../../constants';
 import { skeleton } from '../../utils';
-import { MouseEvent } from 'react';
 
 /**
  * Renders a theme changer component.
@@ -25,12 +24,7 @@ const ThemeChanger = ({
   loading: boolean;
   themeConfig: SanitizedThemeConfig;
 }) => {
-  const changeTheme = (
-    e: MouseEvent<HTMLAnchorElement>,
-    selectedTheme: string,
-  ) => {
-    e.preventDefault();
-
+  const changeTheme = (selectedTheme: string) => {
     document.querySelector('html')?.setAttribute('data-theme', selectedTheme);
 
     typeof window !== 'undefined' &&
@@ -99,8 +93,11 @@ const ThemeChanger = ({
                       {}
                       <a
                         role="listitem"
-                        onClick={(e) => changeTheme(e, item)}
                         tabIndex={0}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          changeTheme(item);
+                        }}
                         className={`${theme === item ? 'active' : ''}`}
                       >
                         <span className="opacity-60 capitalize">
