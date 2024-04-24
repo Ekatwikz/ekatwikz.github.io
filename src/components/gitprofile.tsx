@@ -58,6 +58,8 @@ const GitProfile = ({ config }: { config: Config }) => {
   });
   const [githubProjects, setGithubProjects] = useState<GithubProject[]>([]);
 
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
   const getGithubProjects = useCallback(
     async (publicRepoCount: number): Promise<GithubProject[]> => {
       if (sanitizedConfig.projects.github.mode === 'automatic') {
@@ -135,7 +137,7 @@ const GitProfile = ({ config }: { config: Config }) => {
       const err = error as AxiosError | Error;
 
       // assuming we don't care about net errors caused by tryna do PWA stuffs with network off? idk
-      if (navigator.onLine || err.message !== 'Network Error') {
+      if (isOnline || err.message !== 'Network Error') {
         handleError(err);
       }
     } finally {
@@ -145,6 +147,7 @@ const GitProfile = ({ config }: { config: Config }) => {
     sanitizedConfig.github.username,
     sanitizedConfig.projects.github.display,
     getGithubProjects,
+    isOnline,
   ]);
 
   useEffect(() => {
@@ -161,6 +164,22 @@ const GitProfile = ({ config }: { config: Config }) => {
   useEffect(() => {
     theme && document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
+
+  const handleStatusChange = () => {
+    setIsOnline(navigator.onLine);
+  };
+
+  useEffect(() => {
+    // Listen to online and offline status
+    window.addEventListener('online', handleStatusChange);
+    window.addEventListener('offline', handleStatusChange);
+
+    // Specify how to clean up after this effect for performance improvment
+    return () => {
+      window.removeEventListener('online', handleStatusChange);
+      window.removeEventListener('offline', handleStatusChange);
+    };
+  }, [isOnline]);
 
   const handleError = (error: AxiosError | Error): void => {
     console.error('Error:', error);
