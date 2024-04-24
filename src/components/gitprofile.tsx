@@ -132,7 +132,12 @@ const GitProfile = ({ config }: { config: Config }) => {
       setGithubProjects(await getGithubProjects(data.public_repos));
       setProjectsLoading(false);
     } catch (error) {
-      handleError(error as AxiosError | Error);
+      const err = error as AxiosError | Error;
+
+      // assuming we don't care about net errors caused by tryna do PWA stuffs with network off? idk
+      if (navigator.onLine || err.message !== 'Network Error') {
+        handleError(err);
+      }
     } finally {
       setProjectsLoading(false);
     }
