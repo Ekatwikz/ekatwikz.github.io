@@ -186,12 +186,6 @@ const GitProfile = ({ config }: { config: Config }) => {
 
     if (error instanceof AxiosError) {
       try {
-        const reset = formatDistance(
-          new Date(error.response?.headers?.['x-ratelimit-reset'] * 1000),
-          new Date(),
-          { addSuffix: true },
-        );
-
         if (
           typeof error.code === 'string' &&
           error.code === 'ERR_NETWORK' &&
@@ -205,7 +199,17 @@ const GitProfile = ({ config }: { config: Config }) => {
         } else if (typeof error.response?.status === 'number') {
           switch (error.response.status) {
             case 403:
-              setError(setTooManyRequestError(reset));
+              setError(
+                setTooManyRequestError(
+                  formatDistance(
+                    new Date(
+                      error.response?.headers?.['x-ratelimit-reset'] * 1000,
+                    ),
+                    new Date(),
+                    { addSuffix: true },
+                  ),
+                ),
+              );
               break;
             case 404:
               setError(INVALID_GITHUB_USERNAME_ERROR);
