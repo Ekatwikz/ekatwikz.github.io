@@ -35,68 +35,39 @@ const LinkedinRecommendationsCard = ({
   }, [hasBeenInViewUpdate]);
 
   return (
-    <>
-      {hasBeenInView ? (
-        <div className="col-span-1 lg:col-span-2" ref={ref}>
-          <div className="grid grid-cols-2 gap-6">
-            <div className="col-span-2">
-              <div className="card compact bg-base-100 shadow bg-opacity-40">
-                <div className="card-body">
-                  <div className="mx-3 flex items-center justify-between mb-2">
-                    <h5 className="card-title">
-                      <span className="text-base-content opacity-70">
-                        {header}
-                      </span>
-                    </h5>
-                  </div>
-                  <div className="col-span-2">
-                    <div className="grid gap-6">
-                      <div
-                        className={`elfsight-app-${widgetid}`}
-                        data-elfsight-app-lazy
-                      ></div>
-                    </div>
-                  </div>
-                </div>
+    <div className="col-span-1 lg:col-span-2" ref={ref}>
+      <div className="grid grid-cols-2 gap-6">
+        <div className="col-span-2">
+          <div className="card compact bg-base-100 shadow bg-opacity-40">
+            <div className="card-body">
+              <div className="mx-3 flex items-center justify-between mb-2">
+                <h5 className="card-title">
+                  <span className="text-base-content opacity-70">{header}</span>
+                </h5>
               </div>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="col-span-1 lg:col-span-2" ref={ref}>
-          <div className="grid grid-cols-2 gap-6">
-            <div className="col-span-2">
-              <div className="card compact bg-base-100 shadow bg-opacity-40">
-                <div className="card-body">
-                  <div className="mx-3 flex items-center justify-between mb-2">
-                    <h5 className="card-title">
+              <div className="col-span-2">
+                <div className="grid gap-6 min-h-48">
+                  {hasBeenInView ? (
+                    <div
+                      className={`elfsight-app-${widgetid}`}
+                      data-elfsight-app-lazy
+                    ></div>
+                  ) : (
+                    <div className="grid card gap-1 p-0">
                       {skeleton({
-                        widthCls: 'w-64',
-                        heightCls: 'h-8',
-                        className: 'mx-auto',
+                        widthCls: `w-full`,
+                        heightCls: 'h-full',
+                        className: 'mx-auto rounded-xl',
                       })}
-                    </h5>
-                  </div>
-                  <div className="col-span-2">
-                    <div className="grid card shadow-lg bg-base-100 gap-1 p-3">
-                      {[32, 96, 64, 96].map((val, i) => (
-                        <div key={i}>
-                          {skeleton({
-                            widthCls: `w-${val}`,
-                            heightCls: 'h-5',
-                            className: 'mx-auto rounded-none m-1',
-                          })}
-                        </div>
-                      ))}
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </div>
-      )}
-    </>
+      </div>
+    </div>
   );
 };
 
