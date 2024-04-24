@@ -192,7 +192,17 @@ const GitProfile = ({ config }: { config: Config }) => {
           { addSuffix: true },
         );
 
-        if (typeof error.response?.status === 'number') {
+        if (
+          typeof error.code === 'string' &&
+          error.code === 'ERR_NETWORK' &&
+          error.message === 'Network Error'
+        ) {
+          setError({
+            status: error.response?.status ?? 404,
+            title: 'Gah!!',
+            subTitle: 'A network error ocurred. Maybe try refreshing the app?',
+          });
+        } else if (typeof error.response?.status === 'number') {
           switch (error.response.status) {
             case 403:
               setError(setTooManyRequestError(reset));
