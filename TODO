@@ -9,3 +9,9 @@
 - change resume-download and tech-stack text to be taken from config
 
 - put seo stuff in one place
+
+- refresh page/APIs/summink/idk when coming back online
+
+- add config section for initial profile, and bool to toggle using it
+
+- use initial profile bool (or a new one?) to decide whether to ignore net errors when offline
