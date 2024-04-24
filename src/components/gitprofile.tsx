@@ -184,8 +184,8 @@ const GitProfile = ({ config }: { config: Config }) => {
             default:
               setError({
                 status: error.response.status,
-                title: 'Oops!!',
-                subTitle: 'Something went wrong.',
+                title: 'Oopsie!!',
+                subTitle: 'Something went wrong',
               });
               break;
           }
