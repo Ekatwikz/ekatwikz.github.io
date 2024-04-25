@@ -20,3 +20,7 @@
 	idk. in general it behaves super weirdly compared to the normal select box
 	like this one even has some nonsense with being able to tab into it backwards
 	without explicitly opening it first, yuck
+
+- linkedin recommendations component will never show a cached version no matter what,
+	b/c the thingy now waits until its initially online now...
+	fix that ig, lel
