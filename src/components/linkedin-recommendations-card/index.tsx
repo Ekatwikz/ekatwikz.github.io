@@ -9,22 +9,27 @@ import { useInView } from 'react-intersection-observer';
 const LinkedinRecommendationsCard = ({
   widgetid,
   header,
+  isOnline,
 }: {
   widgetid: string;
   header: string;
+  isOnline: boolean;
 }) => {
   const [ref, inView] = useInView({ threshold: 0.2 });
-  const [hasBeenInView, setHasBeenInView] = useState(inView);
+  const [hasBeenInViewWhileOnline, setHasBeenInViewWhileOnline] = useState(
+    inView && isOnline,
+  );
 
   // we only want to trigger the heavy update once it comes into view
   // for the first time, no need to unmount it b/c that'd be quite a waste
-  const hasBeenInViewUpdate = inView || hasBeenInView;
+  const hasBeenInViewWhileOnlineUpdate =
+    (inView && isOnline) || hasBeenInViewWhileOnline;
 
   useEffect(() => {
-    setHasBeenInView(hasBeenInViewUpdate);
+    setHasBeenInViewWhileOnline(hasBeenInViewWhileOnlineUpdate);
 
     // add hakked elfsight script once the component comes into view
-    if (hasBeenInViewUpdate) {
+    if (hasBeenInViewWhileOnlineUpdate) {
       const script = document.createElement('script');
       script.src =
         'https://cdn.jsdelivr.net/gh/Ekatwikz/linkedInFiesta/platform.min.js';
@@ -32,7 +37,7 @@ const LinkedinRecommendationsCard = ({
 
       document.head.appendChild(script);
     }
-  }, [hasBeenInViewUpdate]);
+  }, [hasBeenInViewWhileOnlineUpdate]);
 
   return (
     <div className="col-span-1 lg:col-span-2" ref={ref}>
@@ -47,7 +52,7 @@ const LinkedinRecommendationsCard = ({
               </div>
               <div className="col-span-2">
                 <div className="grid gap-6 min-h-48">
-                  {hasBeenInView ? (
+                  {hasBeenInViewWhileOnline ? (
                     <div
                       className={`elfsight-app-${widgetid}`}
                       data-elfsight-app-lazy

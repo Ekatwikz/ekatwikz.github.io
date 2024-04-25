@@ -306,6 +306,7 @@ const GitProfile = ({ config }: { config: Config }) => {
                           sanitizedConfig.linkedin.recommendations.widgetid
                         }
                         header={sanitizedConfig.linkedin.recommendations.header}
+                        isOnline={isOnline}
                       />
                     )}
                     {sanitizedConfig.projects.external.projects.length !==
