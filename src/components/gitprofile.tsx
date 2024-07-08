@@ -47,7 +47,9 @@ const GitProfile = ({ config }: { config: Config }) => {
   const [error, setError] = useState<CustomError | null>(null);
 
   const [profileLoading] = useState<boolean>(false);
-  const [projectsLoading, setProjectsLoading] = useState<boolean>(false);
+  const [projectsLoading, setProjectsLoading] = useState<boolean>(
+    sanitizedConfig.projects.github.display, // we're initially loading iff we need to
+  );
 
   const [profile, setProfile] = useState<Profile | null>({
     avatar: 'https://avatars.githubusercontent.com/u/8590845?v=4',
@@ -63,6 +65,7 @@ const GitProfile = ({ config }: { config: Config }) => {
   const getGithubProjects = useCallback(
     async (publicRepoCount: number): Promise<GithubProject[]> => {
       if (sanitizedConfig.projects.github.mode === 'automatic') {
+        // shouldn't this just be a bool tho???
         if (publicRepoCount === 0) {
           return [];
         }
@@ -111,9 +114,26 @@ const GitProfile = ({ config }: { config: Config }) => {
   );
 
   const loadData = useCallback(async () => {
-    try {
-      setProjectsLoading(true);
+    const errCallback = (error: unknown) => {
+      const err = error as AxiosError | Error;
 
+      // ignore rate limit errors imo,
+      // we can still display some data at least
+      if (
+        error instanceof AxiosError &&
+        typeof error.response?.status === 'number' &&
+        error.response.status == 403
+      ) {
+        return;
+      }
+
+      // assuming we don't care about net errors caused by tryna do PWA stuffs with network off? idk
+      if (isOnline || err.message !== 'Network Error') {
+        handleError(err);
+      }
+    };
+
+    try {
       const response = await axios.get(
         `https://api.github.com/users/${sanitizedConfig.github.username}`,
       );
@@ -126,20 +146,19 @@ const GitProfile = ({ config }: { config: Config }) => {
         location: data.location || '',
         company: data.company || '',
       });
+    } catch (error) {
+      errCallback(error);
+    }
 
-      if (!sanitizedConfig.projects.github.display) {
-        return;
-      }
+    if (!sanitizedConfig.projects.github.display) {
+      return;
+    }
 
-      setGithubProjects(await getGithubProjects(data.public_repos));
+    try {
+      setGithubProjects(await getGithubProjects(1)); // quick hack
       setProjectsLoading(false);
     } catch (error) {
-      const err = error as AxiosError | Error;
-
-      // assuming we don't care about net errors caused by tryna do PWA stuffs with network off? idk
-      if (isOnline || err.message !== 'Network Error') {
-        handleError(err);
-      }
+      errCallback(error);
     } finally {
       setProjectsLoading(false);
     }
