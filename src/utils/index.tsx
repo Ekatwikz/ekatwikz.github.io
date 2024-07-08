@@ -53,6 +53,7 @@ export const getSanitizedConfig = (
                 config?.projects?.github?.automatic?.exclude?.projects || [],
             },
           },
+          showStats: config?.projects?.github?.showStats || true,
           manual: {
             projects: config?.projects?.github?.manual?.projects || [],
           },

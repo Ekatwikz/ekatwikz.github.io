@@ -32,6 +32,7 @@ const CONFIG = {
           projects: [], // These projects will not be displayed. example: ['arifszn/my-project1', 'arifszn/my-project2']
         },
       },
+      showStats: false, // Display star/fork count?
       manual: {
         // Properties for manually specifying projects
         projects: [

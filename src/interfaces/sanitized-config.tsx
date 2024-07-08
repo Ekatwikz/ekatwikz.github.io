@@ -22,6 +22,7 @@ export interface SanitizedGitHubProjects {
       projects: Array<string>;
     };
   };
+  showStats: boolean;
   manual: {
     projects: Array<string>;
   };

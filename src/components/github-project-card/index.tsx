@@ -11,6 +11,7 @@ const GithubProjectCard = ({
   limit,
   username,
   googleAnalyticsId,
+  showStats,
 }: {
   header: string;
   githubProjects: GithubProject[];
@@ -18,6 +19,7 @@ const GithubProjectCard = ({
   limit: number;
   username: string;
   googleAnalyticsId?: string;
+  showStats: boolean;
 }) => {
   if (!loading && githubProjects.length === 0) {
     return;
@@ -108,16 +110,18 @@ const GithubProjectCard = ({
             </p>
           </div>
           <div className="flex justify-between text-sm text-base-content text-opacity-60 truncate">
-            <div className="flex flex-grow">
-              <span className="mr-3 flex items-center">
-                <AiOutlineStar className="mr-0.5" />
-                <span>{item.stargazers_count}</span>
-              </span>
-              <span className="flex items-center">
-                <AiOutlineFork className="mr-0.5" />
-                <span>{item.forks_count}</span>
-              </span>
-            </div>
+            {showStats && (
+              <div className="flex flex-grow">
+                <span className="mr-3 flex items-center">
+                  <AiOutlineStar className="mr-0.5" />
+                  <span>{item.stargazers_count}</span>
+                </span>
+                <span className="flex items-center">
+                  <AiOutlineFork className="mr-0.5" />
+                  <span>{item.forks_count}</span>
+                </span>
+              </div>
+            )}
             <div>
               <span className="flex items-center">
                 <div

@@ -61,6 +61,8 @@ interface GitHubProjects {
     };
   };
 
+  showStats?: boolean;
+
   /**
    * Config of manual mode
    */
