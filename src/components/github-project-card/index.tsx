@@ -102,7 +102,7 @@ const GithubProjectCard = ({
             <div className="flex items-center truncate">
               <div className="card-title text-lg tracking-wide flex text-base-content opacity-60">
                 <MdInsertLink className="my-auto" />
-                <span>{item.name}</span>
+                <span translate="no">{item.name}</span>
               </div>
             </div>
             <p className="mb-5 mt-1 text-base-content text-opacity-60 text-sm">
@@ -128,7 +128,7 @@ const GithubProjectCard = ({
                   className="w-3 h-3 rounded-full mr-1 opacity-60"
                   style={{ backgroundColor: getLanguageColor(item.language) }}
                 />
-                <span>{item.language}</span>
+                <span translate="no">{item.language}</span>
               </span>
             </div>
           </div>

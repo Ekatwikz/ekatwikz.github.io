@@ -63,7 +63,16 @@ const ListItem: React.FC<{
   link?: string;
   role?: string;
   skeleton?: boolean;
-}> = ({ icon, title, value, link, role, skeleton = false }) => {
+  translateValue?: boolean;
+}> = ({
+  icon,
+  title,
+  value,
+  link,
+  role,
+  skeleton = false,
+  translateValue = false,
+}) => {
   return (
     <a
       href={link}
@@ -82,6 +91,7 @@ const ListItem: React.FC<{
         style={{
           wordBreak: 'break-word',
         }}
+        translate={translateValue ? 'yes' : 'no'}
       >
         {value}
       </div>
@@ -290,6 +300,7 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
                   title="Based in:"
                   value={profile.location}
                   role="button"
+                  translateValue={true}
                 />
               )}
             </Fragment>
