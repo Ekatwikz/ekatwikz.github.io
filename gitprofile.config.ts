@@ -129,8 +129,7 @@ const CONFIG = {
     email: 'ekatwikz@gmail.com',
   },
   resume: {
-    fileUrl:
-      'https://drive.google.com/uc?export=download&id=1JFb4AIWGgU9ZvPxdywZ36Uc8FXfr1wFS', // Empty fileUrl will hide the `Download Resume` button.
+    fileUrl: '', // Empty fileUrl will hide the `Download Resume` button.
   },
   skills: [
     'C',
