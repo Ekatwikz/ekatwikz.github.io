@@ -169,15 +169,7 @@ const CONFIG = {
     'LaTeX',
     'Doxygen',
   ],
-  experiences: [
-    {
-      company: 'Faculty of Mathematics and Information Science, WUT',
-      position: 'Software Development Intern',
-      from: 'October 2023',
-      to: 'January 2024',
-      companyLink: 'https://ww2.mini.pw.edu.pl/',
-    },
-  ],
+  experiences: [],
   certifications: [],
   educations: [
     {
