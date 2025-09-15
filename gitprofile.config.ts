@@ -125,8 +125,6 @@ const CONFIG = {
     skype: '',
     telegram: '',
     website: '',
-    phone: '+48 579618306',
-    email: 'ekatwikz@gmail.com',
   },
   resume: {
     fileUrl: '', // Empty fileUrl will hide the `Download Resume` button.
